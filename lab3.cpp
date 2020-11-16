@@ -52,13 +52,50 @@ class Kwadrat : public Figura{
         };
 };
 
+class WektorFigur{
+    private:
+        int liczbaFigur;
+        Figura* wektor[1000];
+    public:
+        WektorFigur(int n=0):liczbaFigur{n}{};
+
+        Figura* operator[](int i) {
+            if (i<liczbaFigur)
+                return wektor[i];
+            else
+                return nullptr;
+        };
+
+        void push(Figura* pointer){
+            wektor[liczbaFigur] = pointer;
+            liczbaFigur++;
+
+        };
+
+        void pop(){
+            wektor[liczbaFigur-1] = nullptr;
+            liczbaFigur--;
+
+        };
+
+        void print(){
+            for(i=0,i<liczbaFigur,i++)
+                cout<<
+        };
+
+};
 void id(Figura* x){
    x->id();
 };
 
 int main()
 {
-    Figura* f = new Kwadrat{5};
-    delete f;
+    Figura* a =  new Kwadrat{5};
+    Figura* b =  new Kwadrat{5};
+    Figura* c =  new Kolo{3};
+
+    WektorFigur x{};
+
+
 }
 
