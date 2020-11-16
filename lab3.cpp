@@ -1,10 +1,15 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
+
 class Figura{
     protected:
         double pole=0;
     public:
+        virtual ~Figura(){
+            cout<<"Figura deleted\n";
+        };
+
         double get_pole(){
             return pole;
         };
@@ -12,10 +17,10 @@ class Figura{
         void set_pole(double value){
             pole = value;
         };
-        void id(){
+        virtual void id(){
             cout<<"Figura";
-        };
 
+        };
 };
 
 class Kolo : public Figura{
@@ -25,9 +30,12 @@ class Kolo : public Figura{
         Kolo(double r):promien{r}{
             pole = 3.14*promien*promien;
         };
-    void id(){
-            cout<<"Kolo";
+        ~Kolo()override{
+            cout<<"Kolo deleted\n";
         };
+        void id() override{
+                cout<<"Kolo";
+            };
 };
 class Kwadrat : public Figura{
     private:
@@ -36,7 +44,10 @@ class Kwadrat : public Figura{
         Kwadrat(double a):bok{a}{
             pole = bok*bok;
         };
-    void id(){
+        ~Kwadrat()override{
+            cout<<"Kwadrat deleted\n";
+        };
+    void id() override{
             cout<<"Kwadrat";
         };
 };
@@ -47,6 +58,7 @@ void id(Figura* x){
 
 int main()
 {
-    Kwadrat a{5.};
-    id(&a);
+    Figura* f = new Kwadrat{5};
+    delete f;
 }
+
