@@ -9,7 +9,7 @@ unsigned int transportujFlota(unsigned int towar)
     if (towar!=0){
         Stocznia stocznia{};
 
-        while(towar<licznikTowaru){
+        while(towar>licznikTowaru){
             Statek* s1 = stocznia();
             licznikTowaru += s1->transportuj();
             Zaglowiec* test = dynamic_cast<Zaglowiec*>(s1);
@@ -20,4 +20,4 @@ unsigned int transportujFlota(unsigned int towar)
         };
     };
     return liczniZaglowcow;
-}
+};
